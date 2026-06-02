@@ -30,3 +30,7 @@ public class findTheSecondLargestNumber {
 	}
 
 }
+
+// The condition of arr[i]!=first is written by keeping in mind that for duplicates
+// Like we may get an array like int arr[] = {9,9,1,4}
+

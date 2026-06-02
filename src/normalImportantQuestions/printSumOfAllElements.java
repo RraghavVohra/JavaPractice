@@ -6,6 +6,7 @@ public class printSumOfAllElements {
 		// TODO Auto-generated method stub
 
 		int[] arr = {3,7,1,9,4,6};
+		findSum(arr);
 		
 	}
 	
@@ -19,5 +20,5 @@ public class printSumOfAllElements {
 		
 		System.out.println("Final Sum:" + sum);
 		
-}
-}
+}}
+
