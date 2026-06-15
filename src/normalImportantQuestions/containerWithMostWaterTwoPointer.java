@@ -36,3 +36,44 @@ public class containerWithMostWaterTwoPointer {
 	
 }
 
+// L=0, R=8
+// Pehle: height[0]=1, height[8]=7
+// water = min(1,7) × (8-0) = 1 × 8 = 8
+// maxWater = Math.max(0,8) = 8
+// height[L]=1 < height[R]=7 → left++
+// Ab: L=1, R=8
+
+// L=1, R=8
+// Pehle: height[1]=8, height[8]=7
+// water = min(8,7) × (8-1) = 7 × 7 = 49
+// maxWater = Math.max(8,49) = 49
+// height[L]=8 > height[R]=7 → right--
+// Ab: L=1, R=7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
