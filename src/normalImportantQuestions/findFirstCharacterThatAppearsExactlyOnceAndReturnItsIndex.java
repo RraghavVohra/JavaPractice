@@ -40,7 +40,7 @@ public class findFirstCharacterThatAppearsExactlyOnceAndReturnItsIndex {
 	// But agar kabhi freq.entrySet() iterate karna ho directly — tab LinkedHashMap insertion order guarantee karta hai. 
 	// Good habit hai use karna.
 	
-	// WHAT IF THE NOW WE HAVE TO RETURN ALL THE UNIQUE CHARACTERS INSTEAD OF ONE
+	// WHAT IF NOW WE HAVE TO RETURN ALL THE UNIQUE CHARACTERS INSTEAD OF ONE
 	public static List<Character> allUniqChars(String s){
 		
 		// PASS 1 : BUILD FREQUENCY MAP

@@ -17,6 +17,7 @@ public class checkTwoStringsAreAnagramsOfEachOther {
 	
 	public static boolean isAnagram(String s1,String s2) {
 		
+		// EDGE CASES 
 		if(s1.length() != s2.length()) {
 			return false;
 		}
@@ -32,6 +33,8 @@ public class checkTwoStringsAreAnagramsOfEachOther {
 		// PASS 2 : NOW WE WILL CHECK WHETHER THE CHARACTERS IN S2 ARE THEIR IN S1
 		for(char c : s2.toCharArray()) {
 			// ['s','i','l','e','n','t']
+		//	map.containsKey(c)  → "kya c hai map mein?"
+		//	!map.containsKey(c) → "kya c NAHI hai map mein?"
 			if(!map.containsKey(c)) {
 				return false;
 			}
@@ -47,8 +50,43 @@ public class checkTwoStringsAreAnagramsOfEachOther {
 		}
 		return true;
 	}
-	
-	
-
-	
 }
+	
+// containsKey sirf ye check karta hai ki character exist karta hai ki nhi - kitna aaya ye nhi dekhta
+// map.get(c)-1 -> current count nikalo uss character ka. Ek minus karo, matlab "s2" ne iss character ko ek baar
+// use karliya hai. Phir map.put(.....) -> Updated count wapas map mein daalo
+	
+	// HASHMAP vs LINKEDHASHMAP — difference
+
+	// HashMap → order guarantee nahi karta
+	// Map<Character, Integer> freq = new HashMap<>();
+	// freq = {c=1, a=2, b=2, d=1, e=1}  ← kisi bhi order mein ho sakta hai
+
+	// LinkedHashMap → insertion order maintain karta hai
+	// Map<Character, Integer> freq = new LinkedHashMap<>();
+	// freq = {a=2, b=2, c=1, d=1, e=1}  ← exactly jis order mein characters aaye
+
+	// Is problem mein LinkedHashMap isliye use kiya:
+	// Pass 2 mein agar map.entrySet() iterate karte (s.charAt(i) ki jagah)
+	// toh order matter karta — first unique sahi crambe mein milta
+
+	// NOTE: humne s.charAt(i) se index access kiya hai
+	// isliye HashMap se bhi kaam chal jaata — order yahan matter nahi karta
+	// LinkedHashMap use karna best practice hai — future-proof rehta hai
+	
+// THE OTHER WAY OF WRITING 
+
+// for (char c : s2.toCharArray()) {
+
+// if (map.containsKey(c)) {
+    // Hai → subtract karo
+//    map.put(c, map.get(c) - 1);
+//   if (map.get(c) < 0) {
+//        return false;
+//    }
+// } else {
+    // Nahi hai → return false
+//    return false;
+// }
+// }
+
