@@ -40,6 +40,25 @@ public class findFirstCharacterThatAppearsExactlyOnceAndReturnItsIndex {
 	// But agar kabhi freq.entrySet() iterate karna ho directly — tab LinkedHashMap insertion order guarantee karta hai. 
 	// Good habit hai use karna.
 	
+	// CONCEPT NOTE: Why List<Character> here?
+	// List is an interface in Java that represents an ordered collection —
+	// it maintains insertion order and allows duplicates, and elements can
+	// be accessed by index (e.g. result.get(0)). In this problem, we needed
+	// to collect all unique characters in the SAME ORDER they first appeared
+	// in the string (left to right) — e.g. for "leetcode", the unique chars
+	// in order are [l, t, c, d]. A Set was not suitable because HashSet does
+	// not guarantee order, and a Map was unnecessary because we don't need
+	// key-value pairs here, just a sequence of characters. List is the right
+	// fit because it preserves order and allows us to simply keep adding
+	// characters as we find them.
+	//
+	// We can't instantiate List directly since it's an interface, so we use
+	// ArrayList as the concrete implementation — ArrayList is backed by a
+	// dynamic array internally, giving fast O(1) access by index, and it's
+	// the most commonly used List implementation in practice.
+	//
+	// List<Character> result = new ArrayList<>();
+	
 	// WHAT IF NOW WE HAVE TO RETURN ALL THE UNIQUE CHARACTERS INSTEAD OF ONE
 	public static List<Character> allUniqChars(String s){
 		
@@ -60,4 +79,5 @@ public class findFirstCharacterThatAppearsExactlyOnceAndReturnItsIndex {
 	}
 	
 }
+
 

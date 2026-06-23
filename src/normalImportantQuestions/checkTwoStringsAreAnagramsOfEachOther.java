@@ -90,3 +90,25 @@ public class checkTwoStringsAreAnagramsOfEachOther {
 // }
 // }
 
+//CONCEPT NOTE: Why Map<Character, Integer> here?
+//Map is an interface in Java that stores data as key-value pairs —
+//each key is unique, and maps to exactly one value. In this problem,
+//we needed to count HOW MANY TIMES each character appears in s1, and
+//then verify those same counts against s2. A List wouldn't work here
+//because we don't just need to know which characters exist — we need
+//to track a COUNT against each character, which is exactly what a
+//key-value structure gives us: character as the key, frequency as the
+//value (e.g. "listen" → {l=1, i=1, s=1, t=1, e=1, n=1}). A Set was also
+//not suitable because Set only tracks existence (yes/no), not count.
+//Map is the right fit because anagram-checking is fundamentally a
+//frequency-comparison problem.
+//
+//We can't instantiate Map directly since it's an interface, so we use
+//HashMap as the concrete implementation — HashMap gives O(1) average
+//time complexity for get/put operations, and since order of characters
+//doesn't matter for this problem (we're only comparing counts, not
+//sequence), HashMap (unordered) is sufficient — no need for the extra
+//overhead of LinkedHashMap.
+//
+//Map<Character, Integer> map = new HashMap<>();
+
