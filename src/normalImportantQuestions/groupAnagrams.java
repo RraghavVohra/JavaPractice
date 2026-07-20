@@ -94,7 +94,34 @@ public class groupAnagrams {
 //
 //return new ArrayList<>(map.values());
 
+//CONCEPT NOTE: String key = new String(ca);
+//'ca' is a char[], not a String. The String class has a constructor
+//that accepts a char array and builds a new String object from it.
+//We need this conversion because Map keys must be Strings (or objects
+//with proper equals/hashCode) — arrays don't compare correctly as map
+//keys (two identical char[] arrays are NOT equal by default in Java).
+//So after sorting the char array, we convert it back to a String to
+//safely use as our canonical map key.
+//
+//CONCEPT NOTE: significance of 'new' keyword
+//'new' creates a fresh object in memory. We can't just reference a
+//class name to get a usable object — 'new ArrayList<>()' explicitly
+//allocates a new, empty ArrayList instance. We use it twice here:
+//once to create a new list when a key is first seen
+//(map.put(key, new ArrayList<>())), and once to wrap map.values()
+//into a proper ArrayList for the return type
+//(new ArrayList<>(map.values())).
 
+
+// ITERATIONS
+// strs = ["eat","tea","ate","tan","nat","bat"]
+
+// s="eat" → key="aet" → map mein nahi → new list → map={aet:["eat"]}
+// s="tea" → key="aet" → map mein hai  → add        → map={aet:["eat","tea"]}
+// s="ate" → key="aet" → map mein hai  → add        → map={aet:["eat","tea","ate"]}
+// s="tan" → key="ant" → map mein nahi → new list   → map={aet:[...], ant:["tan"]}
+// s="nat" → key="ant" → map mein hai  → add        → map={aet:[...], ant:["tan","nat"]}
+// s="bat" → key="abt" → map mein nahi → new list   → map={aet:[...], ant:[...], abt:["bat"]}
 
 
 
